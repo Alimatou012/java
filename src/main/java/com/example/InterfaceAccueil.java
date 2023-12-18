@@ -55,6 +55,7 @@ public class InterfaceAccueil {
 
         navPanel.add(Box.createRigidArea(new Dimension(0, 30)));
 
+        // mainPanel.add(navPanel, BorderLayout.WEST); // Ajout du panneau de navigation à gauche
         mainPanel.add(navPanel, BorderLayout.WEST); // Ajout du panneau de navigation à gauche
 
         // Ajout d'un espace rigide en bas pour déplacer les composants vers le bas
@@ -81,7 +82,21 @@ public class InterfaceAccueil {
                 });
             }
         });
+       
+         myReservationsButton.addActionListener(new ActionListener() {
+             
+            @Override 
+                public void actionPerformed(ActionEvent e) { 
+                 SwingUtilities.invokeLater(() -> { 
+                     ListesReservations listesReservations = new ListesReservations();
+                      reservationPanel.removeAll(); 
+                      reservationPanel.add(listesReservations); 
+                      frame.revalidate(); 
+                      frame.repaint();
+                     }); } });
     }
+
+
 
     // Méthode pour redimensionner une icône
     private static ImageIcon createResizedIcon(String imagePath, int width, int height) {
